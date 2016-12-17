@@ -21,7 +21,7 @@ class Program
         RemoveXmlns(xml);
         SetProjectSdk(xml);
         RemoveImportMicrosoftCommonProps(xml);
-        RemoveWildcardIncludes(xml);
+        //RemoveWildcardIncludes(xml);
         ConvertPackageReferenceVersionsToAttributes(xml);
         UpgradeToMsbuild2Final(xml);
         RemoveImportMicrosoftCsharpTargets(xml);
@@ -31,6 +31,7 @@ class Program
         using (var fs = File.OpenWrite(args[0]))
         {
             xml.Save(fs);
+            fs.SetLength(fs.Position);
         }
     }
 
